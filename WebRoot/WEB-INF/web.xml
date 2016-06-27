@@ -33,6 +33,16 @@
     <servlet-name>Err</servlet-name>
     <servlet-class>com.hsp.view.Err</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UpdateUserView</servlet-name>
+    <servlet-class>com.hsp.view.UpdateUserView</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddUserView</servlet-name>
+    <servlet-class>com.hsp.view.AddUserView</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -66,6 +76,14 @@
   <servlet-mapping>
     <servlet-name>Err</servlet-name>
     <url-pattern>/Err</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateUserView</servlet-name>
+    <url-pattern>/UpdateUserView</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddUserView</servlet-name>
+    <url-pattern>/AddUserView</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

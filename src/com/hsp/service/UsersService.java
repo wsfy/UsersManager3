@@ -5,7 +5,7 @@ import com.hsp.util.SqlHelper;
 
 import java.sql.*;
 import java.util.ArrayList;
-public class UsersService {
+public class UsersService {// 该类主要完成对Users类的操作，即对users表进行管理。
 
 	
 	// 获取pageCount
@@ -68,8 +68,62 @@ public class UsersService {
 	}
 	
 	
+	
+	
+	// 通过id获取用户数据
+	public User getUserById(String id) {
+		
+		User user = new User();
+		String sql = "select * from users where id=?";
+		String parameters[] = {id};
+		ResultSet rs = SqlHelper.executeQuery(sql, parameters);
+		try {
+			if (rs.next()) {
+				// 二次封装，二次封装的目的：用起来方便
+				user.setId(rs.getInt(1));
+				user.setName(rs.getString(2));
+				user.setEmail(rs.getString(3));
+				user.setGrade(rs.getInt(4));
+				user.setPwd(rs.getString(5));				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			SqlHelper.close(rs, SqlHelper.getPs(), SqlHelper.getCt());// 典型：反向引用
+		}
+		return user;
+	}
+	
 	// 添加用户
-	// 修改用户
+	
+	public boolean addUser(User user) {
+		boolean b = true;
+		String  sql = "insert into users values(users_seq.nextval,?,?,?,?)";
+		String parameters[] = {user.getName(), user.getEmail(), user.getGrade() + "", user.getPwd()};
+		try {
+			SqlHelper.executeQuery(sql, parameters);
+		} catch (Exception e) {
+			b = false;
+			// TODO: handle exception
+		}
+		return b;
+	}
+	// 修改用户（即修改数据）。这个成员方法接收的是user对象。
+	public boolean updUser(User user) {
+		boolean b = true;
+		String sql = "update users set username=?,email=?,grade=?,passwd=? where id=?";
+		String parameters[] = {user.getId() + "", user.getName(), user.getEmail(), user.getGrade() + "", user.getPwd()};
+		
+		try {// 因为就一条sql语句，所以不涉及事务不事务。
+			SqlHelper.executeUpdate(sql, parameters);
+		} catch (Exception e) {
+			b = false;
+			// TODO: handle exception
+		}
+		return b;
+		
+	}
 	// 删除用户
 	public boolean delUser(String id) {
 		boolean b = true;

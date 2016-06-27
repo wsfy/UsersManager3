@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hsp.domain.User;
 
-public class MainFrame extends HttpServlet {
+public class MainFrame extends HttpServlet {// 用户管理主界面
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -22,7 +22,7 @@ public class MainFrame extends HttpServlet {
 		
 		out.println("<h3>请选择您要进行的操作</h3>");
 		out.println("<a href='/UsersManager3/ManageUsers'>管理用户</a><br/>");
-		out.println("<a href=''>添加用户</a><br/>");
+		out.println("<a href='/UsersManager3/UserClServlet?type=gotoAddUser'>添加用户</a><br/>");
 		out.println("<a href=''>查找用户</a><br/>");
 		out.println("<a href=''>退出系统</a><br/>");
 		out.println("<hr/><img src='imgs/mylogo.gif'/>");

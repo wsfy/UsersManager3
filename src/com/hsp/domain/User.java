@@ -7,16 +7,17 @@ public class User {
 	private int id;
 	private int grade;
 	private String email;
-	public String getName() {
-		return name;
+	
+	public User() {
+		
 	}
-	public void setName(String name) {
+	
+	public User(int id, String name, String email, int grade, String pwd) {
+		
+		this.id = id;
 		this.name = name;
-	}
-	public String getPwd() {
-		return pwd;
-	}
-	public void setPwd(String pwd) {
+		this.email = email;
+		this.grade = grade;
 		this.pwd = pwd;
 	}
 	public int getId() {
@@ -25,17 +26,29 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getGrade() {
-		return grade;
+	public String getName() {
+		return name;
 	}
-	public void setGrade(int grade) {
-		this.grade = grade;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 	
 }

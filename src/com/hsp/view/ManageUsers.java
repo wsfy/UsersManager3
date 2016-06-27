@@ -70,7 +70,8 @@ public class ManageUsers extends HttpServlet {
 						"</td><td>" + u.getName() + 
 						"</td><td>" + u.getEmail() + 
 						"</td><td>" + u.getGrade() + 
-						"</td><td><a onClick='return confirmOper();' href='/UsersManager3/UserClServlet?type=del&id=" + u.getId() + "'>删除用户</a></td><td><a href='#'>修改用户</a></td></tr>");
+						"</td><td><a onClick='return confirmOper();' href='/UsersManager3/UserClServlet?type=del&id=" + u.getId() + "'>删除用户</a></td>" +
+								"<td><a href='/UsersManager3/UserClServlet?type=gotoUpdView&id=" + u.getId() + "'>修改用户</a></td></tr>");
 			}
 			out.println("</table><br/>");
 			

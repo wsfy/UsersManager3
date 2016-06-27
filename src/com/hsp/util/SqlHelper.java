@@ -15,7 +15,7 @@ public class SqlHelper {
 	
 	// 定义需要的变量
 	private static Connection ct = null;
-	// 在大多数情况下，我们使用的是PreparedStatement来替代Statement
+	// 在大多数情况下，我们使用的是PreparedStatement来替代Statement。
 	// 这样可以防止sql注入。
 	private static PreparedStatement ps = null;
 	private static ResultSet rs = null;
@@ -39,9 +39,9 @@ public class SqlHelper {
 			// 当我们使用JavaWeb的时候，读取文件要使用类加载器[因为类加载器在读取资源的视乎，默认的主目录是src] 
 			fis = SqlHelper.class.getClassLoader().getResourceAsStream("dbinfo.properties");
 			pp.load(fis); 						  // 装载数据库，装载完后开始读取。
+			driver = pp.getProperty("driver");    // 读取配置文件中的信息
 			url = pp.getProperty("url");          // 读取配置文件中的信息
 			username = pp.getProperty("username");// 读取配置文件中的信息
-			driver = pp.getProperty("driver");    // 读取配置文件中的信息
 			password = pp.getProperty("password");// 读取配置文件中的信息
 			Class.forName(driver);				  // 加载驱动
 		} catch (Exception e) {
@@ -211,12 +211,12 @@ public class SqlHelper {
 	//先写一个update、delete、insert。该方法是不考虑事务的数据更新，即不考虑事务的增删改查。
     //sql格式：update 表名 set 字段名 =？where 字段=？
     //parameters 应该是{"abc",23}
-    public static void executeUpdate(String sql,String[] parameters) {
+    public static void executeUpdate(String sql, String[] parameters) {
     	
     	// 1、创建一个ps
         try {
         	
-            ct=getConnection();
+            ct = getConnection();
             ps = ct.prepareStatement(sql);
             // 给？赋值
             if (parameters != null) {
